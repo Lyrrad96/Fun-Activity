@@ -1,0 +1,11 @@
+.toolbar {
+    background-color: grey;
+    height: 40px;
+}
+.toolbar_ele {
+    width: 100px;
+    height: 100%;
+    background-color: aliceblue;
+    text-align: center;
+    margin: auto 0;
+}
