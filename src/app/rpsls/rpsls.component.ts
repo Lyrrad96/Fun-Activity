@@ -1,19 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { CanvasComponent } from '../canvas/canvas.component';
+
 
 @Component({
   selector: 'app-rpsls',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CanvasComponent],
   templateUrl: './rpsls.component.html',
   styleUrl: './rpsls.component.scss'
 })
 export class RpslsComponent {
+
+
   imgArray = ["rock","paper","scissors","lizard","spock"]
 
-  playerChoice = this.imgArray[0]
-  opponentChoice = this.imgArray[0]
-  result: string | boolean = ''
+  playerChoice = ''//this.imgArray[0]
+  opponentChoice = ''//this.imgArray[0]
+  result: string | boolean = 'Play!!!'
   pScore = 0
   oScore = 0
 
@@ -25,11 +29,19 @@ export class RpslsComponent {
     'spock': ['scissors', 'rock'],
   }
 
+  height: number = window.innerHeight
+  width: number = window.innerWidth
+  widthOffset: number = Math.floor(this.width * 0.14)
+  heightOffset: number = Math.floor(this.height * 0.12)
+
   bot = (arr: any) => {
     return arr[Math.trunc(Math.random() * 5)]
   }
 
   selection = (img: any) => {
+    var audio = document.querySelector('audio')
+    console.log('%crpsls.component.ts line:42 ', 'color: #007acc;', );
+    audio?.play()
     this.playerChoice = img
     this.opponentChoice = this.bot(this.imgArray)
     this.result = this.calculate(this.playerChoice, this.opponentChoice)

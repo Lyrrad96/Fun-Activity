@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sliding Door Animation</title>
+  <style>
+    .sliding-container {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .left-panel, .right-panel {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      transition: transform 0.5s ease;
+      text-align: center;
+      line-height: 200px;
+      z-index: 2;
+    }
+
+    .left-panel {
+      left: 0;
+      background-color: lawngreen;
+      border-right: 14px solid royalblue;
+    }
+
+    .right-panel {
+      right: 0;
+      background-color: red;
+      border-left: 14px solid lavenderblush;
+    }
+
+    .center-content {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      /* z-index: 2; */
+      text-align: center;
+      line-height: 200px;
+    }
+
+    .left-panel .partial-word {
+      overflow: hidden;
+    }
+
+    .right-panel .partial-word {
+      overflow: hidden;
+    }
+
+    .partial-word span {
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .sliding-container.open .left-panel {
+      transform: translateX(-100%);
+    }
+
+    .sliding-container.open .right-panel {
+      transform: translateX(100%);
+    }
+  </style>
+</head>
+<body>
+  <div class="sliding-container">
+    <div class="left-panel">
+      <div class="partial-word">
+        <span>Partial</span>
+      </div>
+    </div>
+    <div class="right-panel">
+      <div class="partial-word">
+        <span>Word</span>
+      </div>
+    </div>
+    <div class="center-content">Center Content</div>
+  </div>
+
+  <button onclick="toggleAnimation()">Toggle Animation</button>
+
+  <script>
+    function toggleAnimation() {
+      const container = document.querySelector('.sliding-container');
+      container.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>

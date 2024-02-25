@@ -1,28 +1,78 @@
+<app-canvas [type]="'rpsls'" [widthOffset]="widthOffset" [heightOffset]="heightOffset"></app-canvas>
+
+<audio #rock src="https://soundbible.com/grab.php?id=1964&type=mp3"></audio>
+<audio #paper src="https://soundbible.com/grab.php?id=1964&type=mp3"></audio>
+<audio #scissors src="https://soundbible.com/grab.php?id=1964&type=mp3"></audio>
+<audio #lizard src="https://soundbible.com/grab.php?id=1964&type=mp3"></audio>
+<audio #spock src="https://soundbible.com/grab.php?id=1964&type=mp3"></audio>
+
 <div class="page">
-  <div class="left">
-    <div class="options">
-      @for (img of imgArray; track $index) {
-        <img [ngStyle]="{'border': img == playerChoice ? '4px solid green' : ''}" src="../../assets/{{img}}.png" alt="{{img}}" (click)="selection(img)">
-      }
+  <div class="options" [ngStyle]="{'width' : widthOffset - heightOffset + 'px'}">
+    @for (img of imgArray; track $index) {
+      <img [ngClass]="{'active': img == playerChoice}" src="assets/{{img}}.png" alt="{{img}}" (click)="selection(img)">
+    }
+  </div>
+
+  <div class="players" [ngStyle]="{'width' : heightOffset + 'px'}">
+    <h2 class="logo">P</h2>
+  </div>
+
+  <div class="field">
+    <div class="score"  [ngStyle]="{'height' : heightOffset + 'px'}">
+      <span>{{pScore}}</span>
+      <span>{{result}}</span>
+      <span>{{oScore}}</span>
     </div>
 
+    <div style="flex-grow: 1;">
+      <div>
+        <img src="assets/{{playerChoice}}.png" alt="{{playerChoice}}">
+      </div>
+      <div style="transform: rotateY(180deg);">
+        <img src="assets/{{opponentChoice}}.png" alt="{{opponentChoice}}">
+      </div>
+    </div>
+
+    <div class="score"  [ngStyle]="{'height' : heightOffset + 'px'}"></div>
   </div>
+
+  <div class="players" [ngStyle]="{'width' : heightOffset + 'px'}">
+    <h2 class="logo">B</h2>
+  </div>
+
+  <div class="options" [ngStyle]="{'width' : widthOffset - heightOffset + 'px'}">
+    @for (img of imgArray; track $index) {
+      <img [ngClass]="{'active': img == opponentChoice}" src="assets/{{img}}.png" alt="{{img}}">
+    }
+  </div>
+
+  <!-- <div class="left">
+    <div class="options">
+      @for (img of imgArray; track $index) {
+        <img [ngStyle]="{'border': img == playerChoice ? '4px solid green' : ''}" src="assets/{{img}}.png" alt="{{img}}" (click)="selection(img)">
+      }
+    </div>
+  </div>
+
   <div class="field">
+    <div class="score"></div>
     <div class="left selection">
       <span style="margin: 0 auto;">{{pScore}}</span>
-      <img src="../../assets/{{playerChoice}}.png" alt="selection">
+      <img src="assets/{{playerChoice}}.png" alt="selection">
     </div>
     {{result}}
     <div class="right selection">
       <span style="margin: 0 auto;">{{oScore}}</span>
-      <img src="../../assets/{{opponentChoice}}.png" alt="selection">
+      <img src="assets/{{opponentChoice}}.png" alt="selection">
     </div>
   </div>
+
   <div class="right">
     <div class="options">
       @for (img of imgArray; track $index) {
-        <img [ngStyle]="{'border': img == opponentChoice ? '4px solid green' : ''}" src="../../assets/{{img}}.png" alt="{{img}}">
+        <img [ngStyle]="{'border': img == opponentChoice ? '4px solid green' : ''}" src="assets/{{img}}.png" alt="{{img}}">
       }
     </div>
-  </div>
+  </div> -->
+
 </div>

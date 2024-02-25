@@ -1,61 +1,84 @@
+app-canvas {position: fixed;}
 .page {
   height: 100%;
   width: 100%;
-  background: url(../../assets/field.png) no-repeat;
+  position: fixed;
+  z-index: 1;
+  // background: url(../../assets/field.png) no-repeat;
+  // background: #888;
   background-repeat: no-repeat;
   background-size: 100% 100%;
   border: 0.25rem solid black;
   margin: auto;
   display: flex;
 
-  .left, .right {
-    height: 100%;
-    width: 10%;
+  .options {
     display: flex;
-    // position: fixed;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 8px;
 
-    .options {
-      // position: fixed;
+    img {
+      cursor: pointer;
+    }
+    .active {
+      border: 4px solid red;
+      background-color: white;
+    }
+  }
+
+  .players {
+    justify-content: center;
+    display: flex;
+    margin: auto;
+
+    .logo {
+      background-color: blue;
+      color: red;
+      font-size: 32px;
+      border: 4px solid red;
+      height: 64px;
+      width: 64px;
+      align-items: center;
+      justify-content: center;
       display: flex;
-      flex-direction: column;
-      gap: 16px;
-      height: 100%;
-      margin: auto;
-      // width: 22%;
-
-      img {
-        cursor: pointer;
-        height: 100%;
-        width: 100px;
-        margin: auto;
-        border: 1px solid;
-        background-color: white;
-
-        &:hover {
-          border: 2px solid red;
-        }
-      }
+      border-radius: 50%;
     }
   }
 
   .field {
     display: flex;
-    width: 80%;
-    .right.selection {
-      transform: rotateY(180deg);
-    }
-    .selection {
-      display: flex;
-      flex-direction: column;
-      width: 50%;
-      // position: fixed;
-      img {
+    flex-direction: column;
+    flex-grow: 1;
+
+    .score {
+      // display: flex;
+      align-items: center;
+
+      span {
+        background-color: blue;
+        color: red;
+        margin: 0 auto;
+        font-size: 32px;
+        border: 4px solid red;
+        padding: 0 16px;
+        // height: 64px;
+        // width: 64px;
+        align-items: center;
+        justify-content: center;
         display: flex;
-        margin: auto;
-        height: 60%;
-        // width: 100%;
+        border-radius: 8px;
       }
     }
+
+    div {
+      display: flex;
+      div {
+        width: 50%;
+      }
+    }
+
+
   }
 
 }
